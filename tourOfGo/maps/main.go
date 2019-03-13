@@ -18,10 +18,18 @@ func WordCount(s string) map[string]int  {
 	return wordCountMap
 }
 
-func main() {
-	c := WordCount("word, xafd, list, tag, red, green, green, tag, list")
+func fibonacci() func() int {
+	a := 1
+	b := 0
+	return func() int {
+		a, b = b, a + b
+		return a
+	}
+}
 
-	for k, d := range c {
-		fmt.Printf("单词%v出现字数为 %d\n", k, d)
+func main() {
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
 	}
 }
