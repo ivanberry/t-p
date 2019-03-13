@@ -22,6 +22,9 @@ func fibonacci() func() int {
 	a := 1
 	b := 0
 	return func() int {
+		if b < 0 {
+			a, b = 1, 0
+		}
 		a, b = b, a + b
 		return a
 	}
@@ -29,7 +32,7 @@ func fibonacci() func() int {
 
 func main() {
 	f := fibonacci()
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 100; i++ {
 		fmt.Println(f())
 	}
 }
